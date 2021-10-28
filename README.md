@@ -8,4 +8,10 @@ utils.py
 4. 通过 marker = area.PointInRegion(poi) 判断点poi在哪个小区域内，poi 为一列表存储该点横纵坐标信息
 如[100, 150]，返回 marker 为一字符串如 'Reg 0'，具体代表哪个区域参照formpic.png
 5. area.DrawRegions() 可以在figure内高亮显示所有区域；
-ShowPointMarker(poi, marker) 可以在figure上标记点 poi 的 marker
+ShowPointMarker(poi, marker) 可以在figure上显示标记点 poi 和其 marker
+
+
+Video类：包含 frames: list 为视频所有帧，size: tuple 为视频分辨率尺寸, total_frames: int 为总帧数，
+fps: int 为视频帧率，ref_frame: array 为参考帧
+
+Area类: x0, x1, x2, x3: list 分别为4个区域，map: array 为区域映射谱
