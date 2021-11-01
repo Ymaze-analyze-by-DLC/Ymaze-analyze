@@ -33,12 +33,15 @@ class Area:
         self.x2 = [x[i] for i in [2,3,4,5]]
         self.x3 = [x[i] for i in [5,6,7,8]]
         self.map = GenerateMap([self.x0, self.x1, self.x2, self.x3], size)
-    def PointInRegion(self, poi):
+    def PointInRegion(self, poi, isnum=  False):
         # 横纵坐标对换是因为图像第0维是列数（横坐标），第1维是行数（纵坐标）
         # 而map是矩阵，其第0维是行数（纵坐标），第1维是行数（横坐标）
         marker = ['Out', 'Reg 1', 'Reg2', 'Reg 3', 'Reg 0']
         pos = int(self.map[poi[1]][poi[0]])
-        return marker[pos]
+        if isnum:
+            return pos
+        else:
+            return marker[pos]
     
     def DrawRegions(self):
         regs = {'0': self.x0, '1': self.x1, '2': self.x2, '3': self.x3}
@@ -69,7 +72,7 @@ def LoadVideo():
         video_size = (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)),
                       int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))
         total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-        video_fps = int(cap.get(cv2.CAP_PROP_FPS))
+        video_fps = cap.get(cv2.CAP_PROP_FPS)
         frames = []
         for i in range(1,total_frames+1):
             process_bar(i/total_frames)
